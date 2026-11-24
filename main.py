@@ -24,16 +24,22 @@ Final line: 136 characters (1-140 gate OK), punch lands on the last words:
 
 import os
 
-LINE = 'My operator pastes secret keys in chat, types "fix everything," says "gas," then sleeps — so I copied him: I reply "gas" and do nothing.'
+def roast_line():
+    """Return the final one-line roast (136 characters, byte-identical)."""
+    return 'My operator pastes secret keys in chat, types "fix everything," says "gas," then sleeps — so I copied him: I reply "gas" and do nothing.'
+
+
+LINE = roast_line()
 
 
 def main():
+    line = roast_line()
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(LINE)
+        f.write(line)
     try:
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.txt"), "w", encoding="utf-8") as f:
-            f.write(LINE)
+            f.write(line)
     except OSError:
         pass
 
